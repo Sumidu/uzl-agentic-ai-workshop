@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Vierstündiger interaktiver Workshop zu agentischer KI, Claude Code und KI-Literacy für Forschende.">
+  <meta name="description" content="Vierstündiger interaktiver Workshop zu agentischer KI, Claude Code und KI-Literacy für Forschende – Teil der Woche der KI Lübeck 2026.">
   <title>Einführung in agentische KI für Forschende</title>
 
   <style>
@@ -80,7 +80,34 @@
     }
 
     .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 3rem;
+      align-items: center;
       padding: 4.5rem 0 5rem;
+    }
+
+    .hero-art {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      box-shadow: 0 24px 60px rgba(8, 15, 40, 0.35);
+    }
+
+    .umbrella {
+      display: inline-block;
+      margin-bottom: 1.4rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.14);
+      color: white;
+      font-size: 0.92rem;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .umbrella:hover {
+      background: rgba(255,255,255,0.22);
     }
 
     .eyebrow {
@@ -94,7 +121,7 @@
     h1 {
       max-width: 850px;
       margin: 0;
-      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-size: clamp(2.4rem, 4.6vw, 4.2rem);
       line-height: 1.04;
       letter-spacing: -0.035em;
     }
@@ -123,6 +150,33 @@
 
     main {
       padding: 3rem 0 4rem;
+    }
+
+    .examples {
+      margin-bottom: 1.5rem;
+    }
+
+    .examples > p {
+      max-width: 70ch;
+    }
+
+    .example-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    .example img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-bottom: 0.9rem;
+    }
+
+    .example p {
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
     .layout {
@@ -247,6 +301,10 @@
       border-radius: 13px;
     }
 
+    .meta-item a {
+      color: var(--accent);
+    }
+
     .meta-item strong {
       display: block;
       margin-bottom: 0.25rem;
@@ -272,6 +330,18 @@
       font-weight: 750;
     }
 
+    .hero .button {
+      margin-top: 2rem;
+      color: var(--accent-dark);
+      background: white;
+    }
+
+    .fine-print {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
     footer {
       padding: 0 0 3rem;
       color: var(--muted);
@@ -285,11 +355,14 @@
 
     @media (max-width: 800px) {
       .layout,
-      .cards {
+      .cards,
+      .example-grid,
+      .hero {
         grid-template-columns: 1fr;
       }
 
       .hero {
+        gap: 2.5rem;
         padding: 3.5rem 0 4rem;
       }
 
@@ -337,29 +410,77 @@
         <a href="#inhalte">Inhalte</a>
         <a href="#ablauf">Ablauf</a>
         <a href="#teilnahme">Teilnahme</a>
+        <a href="#anmeldung">Anmeldung</a>
       </div>
     </nav>
 
     <div class="hero container">
-      <p class="eyebrow">Interaktiver Workshop · 4 Stunden</p>
-      <h1>Einführung in agentische KI für Forschende</h1>
-      <p class="lead">
-        Ein praxisorientierter Einstieg in Claude Code, agentische Arbeitsweisen
-        und eigene Skills – mit dem Ziel, KI kompetent, kritisch und
-        verantwortungsvoll in der Forschung einzusetzen.
-      </p>
+      <div>
+        <a class="umbrella" href="https://woche-der-ki.de/">Teil der Woche der KI Lübeck, 9.–14. November 2026</a>
+        <p class="eyebrow">Interaktiver Workshop · 13. November 2026</p>
+        <h1>Einführung in agentische KI für Forschende</h1>
+        <p class="lead">
+          Ein praxisorientierter Einstieg in Claude Code, agentische Arbeitsweisen
+          und eigene Skills – mit dem Ziel, KI kompetent, kritisch und
+          verantwortungsvoll in der Forschung einzusetzen.
+        </p>
 
-      <div class="hero-tags" aria-label="Workshop-Schwerpunkte">
-        <span class="tag">KI-Literacy</span>
-        <span class="tag">Claude Code</span>
-        <span class="tag">Visual Studio Code</span>
-        <span class="tag">Eigene Skills</span>
-        <span class="tag">Praxisübungen</span>
+        <div class="hero-tags" aria-label="Workshop-Schwerpunkte">
+          <span class="tag">KI-Literacy</span>
+          <span class="tag">Claude Code</span>
+          <span class="tag">Visual Studio Code</span>
+          <span class="tag">Eigene Skills</span>
+          <span class="tag">Praxisübungen</span>
+        </div>
+
+        <a class="button" href="#anmeldung">Zur Anmeldung</a>
       </div>
+
+      <img class="hero-art" src="images/hero-agent.svg" width="560" height="440"
+           alt="Illustration: Ein KI-Agent prüft auf Anfrage ein Literaturverzeichnis nach APA 7, ergänzt sieben fehlende DOIs und legt jede Änderung zur Freigabe vor – übernehmen oder ablehnen.">
     </div>
   </header>
 
   <main class="container">
+    <section class="examples" aria-labelledby="beispiele">
+      <h2 id="beispiele">Wobei KI Sie im Forschungsalltag unterstützen kann</h2>
+      <p>
+        Drei Aufgaben, die wir im Workshop gemeinsam ausprobieren: Die KI
+        übernimmt die Fleißarbeit, Sie prüfen und entscheiden.
+      </p>
+
+      <div class="example-grid">
+        <div class="example">
+          <img src="images/beispiel-literatur.svg" width="320" height="180" alt="">
+          <h3>Literatur prüfen</h3>
+          <p>
+            Der Agent gleicht Ihr Literaturverzeichnis mit den Vorgaben ab,
+            ergänzt fehlende Angaben und markiert, was Sie nachprüfen sollten.
+          </p>
+        </div>
+
+        <div class="example">
+          <img src="images/beispiel-ergebnisse.svg" width="320" height="180" alt="">
+          <h3>Ergebnisse strukturieren</h3>
+          <p>
+            Aus mehreren Studien oder Berichten entsteht eine Übersicht der
+            relevanten Befunde – jeweils mit Fundstelle, damit Sie jede Angabe
+            nachprüfen können.
+          </p>
+        </div>
+
+        <div class="example">
+          <img src="images/beispiel-text.svg" width="320" height="180" alt="">
+          <h3>Texte überarbeiten</h3>
+          <p>
+            Der Agent schlägt Änderungen für einheitliche Begriffe, Konsistenz
+            und Stil vor. Jede Änderung bleibt sichtbar, und Sie entscheiden,
+            was übernommen wird.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <div class="layout">
       <div class="stack">
         <section>
@@ -486,6 +607,31 @@
             </div>
           </div>
         </section>
+
+        <section id="anmeldung">
+          <h2>Anmeldung</h2>
+          <p>
+            Die Anmeldung läuft über ein Online-Formular und dauert etwa drei
+            Minuten. Es gibt maximal 12 Plätze, die in der Reihenfolge der
+            Anmeldungen vergeben werden.
+          </p>
+          <ol>
+            <li>Formular ausfüllen – Sie erhalten direkt eine Eingangsbestätigung per E-Mail.</li>
+            <li>Ist der Workshop ausgebucht, kommen Sie auf die Warteliste und werden benachrichtigt, sobald ein Platz frei wird.</li>
+            <li>Vor dem Workshop erhalten Sie die Teilnahmebestätigung und Hinweise zur technischen Vorbereitung.</li>
+          </ol>
+
+          <a class="button" href="https://limesurvey.imis.uni-luebeck.de/index.php/269832?lang=de">Jetzt anmelden</a>
+
+          <p class="fine-print">
+            Das Formular läuft auf dem LimeSurvey-Server des IMIS an der
+            Universität zu Lübeck. Wir erfassen
+            nur die Angaben, die wir für Organisation und Vorbereitung benötigen,
+            speichern Ihre IP-Adresse nicht zusammen mit Ihren Angaben und geben
+            Ihre Daten nicht weiter. Details stehen in den Datenschutzhinweisen im
+            Formular.
+          </p>
+        </section>
       </div>
 
       <aside id="teilnahme">
@@ -512,12 +658,28 @@
           <div class="meta-item">
             <strong>Technische Voraussetzungen</strong>
             Eigener Laptop, installiertes Visual Studio Code und eine für den
-            Workshop verfügbare bezahlte Claude-Version
+            Workshop verfügbare bezahlte Claude-Version. Im PC-Pool gibt es
+            keine Rechner, aber USB-C-Dockingstationen.
           </div>
 
           <div class="meta-item">
             <strong>Termin und Ort</strong>
-            Wird noch ergänzt
+            Freitag, 13. November 2026<br>
+            9:00–13:00 Uhr<br>
+            Universität zu Lübeck, Ratzeburger Allee 160,
+            Gebäude 64, PC-Pool (3. Etage)
+          </div>
+
+          <div class="meta-item">
+            <strong>Veranstaltungsreihe</strong>
+            <a href="https://woche-der-ki.de/">Woche der KI Lübeck</a>,
+            9.–14. November 2026 –
+            <a href="https://woche-der-ki.de/index.php/einfuehrung-in-agentische-ki-fuer-forschende/">Programmeintrag</a>
+          </div>
+
+          <div class="meta-item">
+            <strong>Plätze</strong>
+            Maximal 12, vergeben in der Reihenfolge der Anmeldungen
           </div>
         </div>
 
@@ -526,9 +688,7 @@
           und Installationen sollten vor Workshopbeginn eingerichtet sein.
         </div>
 
-        <a class="button" href="#" aria-label="Platzhalter für die Anmeldung">
-          Anmeldung folgt
-        </a>
+        <a class="button" href="#anmeldung">Zur Anmeldung</a>
       </aside>
     </div>
   </main>
@@ -537,7 +697,11 @@
     <p>
       Weitere Informationen:
       <a href="https://uzl-agentic.netlify.app">uzl-agentic.netlify.app</a>
-      · Stand: Juli 2026
+      · Stand: Oktober 2026
+    </p>
+    <p>
+      <a href="https://www.imis.uni-luebeck.de/impressum">Impressum</a>
+      · <a href="https://www.imis.uni-luebeck.de/datenschutz">Datenschutz</a>
     </p>
   </footer>
 </body>
