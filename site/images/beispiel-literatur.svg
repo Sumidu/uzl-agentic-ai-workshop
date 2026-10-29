@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180">
+  <rect width="320" height="180" rx="14" fill="#eef2ff"/>
+
+  <!-- Before: inconsistent references -->
+  <rect x="20.5" y="28.5" width="119" height="123" rx="10" fill="#ffffff" stroke="#dfe5ee"/>
+  <rect x="34" y="46" width="78" height="7" rx="3.5" fill="#c9d2e3"/>
+  <rect x="34" y="70" width="58" height="7" rx="3.5" fill="#c9d2e3"/>
+  <rect x="96" y="70" width="28" height="7" rx="3.5" fill="#c9d2e3"/>
+  <path d="M96 83l3.5-3 3.5 3 3.5-3 3.5 3 3.5-3 3.5 3 3.5-3" fill="none" stroke="#c0392b" stroke-width="1.6" stroke-linecap="round"/>
+  <rect x="34" y="94" width="88" height="7" rx="3.5" fill="#c9d2e3"/>
+  <rect x="34" y="118" width="40" height="7" rx="3.5" fill="#c9d2e3"/>
+  <rect x="78" y="118" width="36" height="7" rx="3.5" fill="#c9d2e3"/>
+  <path d="M34 131l3.5-3 3.5 3 3.5-3 3.5 3 3.5-3 3.5 3 3.5-3 3.5 3 3.5-3 3.5 3" fill="none" stroke="#c0392b" stroke-width="1.6" stroke-linecap="round"/>
+
+  <!-- Agent step -->
+  <circle cx="160" cy="90" r="14" fill="#3558c8"/>
+  <path d="M153 90h12M160 84l6 6-6 6" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- After: consistent, checked references -->
+  <rect x="180.5" y="28.5" width="119" height="123" rx="10" fill="#ffffff" stroke="#dfe5ee"/>
+  <g fill="#176b50">
+    <circle cx="196" cy="49.5" r="6"/>
+    <circle cx="196" cy="73.5" r="6"/>
+    <circle cx="196" cy="97.5" r="6"/>
+    <circle cx="196" cy="121.5" r="6"/>
+  </g>
+  <g fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M193 49.5l2 2 4-4"/>
+    <path d="M193 73.5l2 2 4-4"/>
+    <path d="M193 97.5l2 2 4-4"/>
+    <path d="M193 121.5l2 2 4-4"/>
+  </g>
+  <g fill="#9fb0d6">
+    <rect x="208" y="46" width="78" height="7" rx="3.5"/>
+    <rect x="208" y="70" width="78" height="7" rx="3.5"/>
+    <rect x="208" y="94" width="78" height="7" rx="3.5"/>
+    <rect x="208" y="118" width="78" height="7" rx="3.5"/>
+  </g>
+</svg>
