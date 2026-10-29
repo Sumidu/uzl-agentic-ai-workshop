@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vierstündiger interaktiver Workshop zu agentischer KI, Claude Code und KI-Literacy für Forschende.">
+  <title>Einführung in agentische KI für Forschende</title>
+
+  <style>
+    :root {
+      --bg: #f4f6fa;
+      --surface: #ffffff;
+      --surface-soft: #eef2ff;
+      --text: #18202a;
+      --muted: #5d6876;
+      --accent: #3558c8;
+      --accent-dark: #1d2a4a;
+      --border: #dfe5ee;
+      --success: #176b50;
+      --radius: 18px;
+      --shadow: 0 12px 32px rgba(24, 32, 42, 0.07);
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 3rem));
+      margin: 0 auto;
+    }
+
+    header {
+      color: white;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(255,255,255,0.18), transparent 28rem),
+        linear-gradient(135deg, var(--accent-dark), var(--accent));
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.2rem 0;
+      font-size: 0.95rem;
+    }
+
+    .brand {
+      font-weight: 750;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.86);
+      text-decoration: none;
+    }
+
+    .hero {
+      padding: 4.5rem 0 5rem;
+    }
+
+    .eyebrow {
+      margin: 0 0 0.8rem;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    h1 {
+      max-width: 850px;
+      margin: 0;
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+    }
+
+    .lead {
+      max-width: 790px;
+      margin: 1.5rem 0 0;
+      font-size: clamp(1.05rem, 2vw, 1.28rem);
+      color: rgba(255,255,255,0.9);
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 2rem;
+    }
+
+    .tag {
+      padding: 0.5rem 0.8rem;
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+    }
+
+    main {
+      padding: 3rem 0 4rem;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(270px, 1fr);
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .stack {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    section,
+    aside {
+      padding: 1.7rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.45rem;
+      line-height: 1.25;
+    }
+
+    h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1.05rem;
+    }
+
+    p {
+      margin: 0.5rem 0 0;
+    }
+
+    ul,
+    ol {
+      margin: 0.8rem 0 0;
+      padding-left: 1.25rem;
+    }
+
+    li + li {
+      margin-top: 0.45rem;
+    }
+
+    .literacy {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface-soft);
+      border-color: #cfd8ff;
+    }
+
+    .literacy::after {
+      content: "KI";
+      position: absolute;
+      right: 1rem;
+      bottom: -2.6rem;
+      font-size: 8rem;
+      font-weight: 800;
+      color: rgba(53, 88, 200, 0.07);
+      pointer-events: none;
+    }
+
+    .literacy strong {
+      color: var(--accent-dark);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .mini-card {
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: #fbfcfe;
+    }
+
+    .mini-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .schedule {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .schedule-item {
+      display: grid;
+      grid-template-columns: 7rem 1fr;
+      gap: 1rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .schedule-item:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .schedule-time {
+      font-weight: 750;
+      color: var(--accent);
+    }
+
+    .meta {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .meta-item {
+      padding: 1rem;
+      background: var(--surface-soft);
+      border-radius: 13px;
+    }
+
+    .meta-item strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .note {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-left: 4px solid var(--success);
+      background: #edf8f4;
+      border-radius: 0 12px 12px 0;
+      color: #174c3b;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 1.2rem;
+      padding: 0.85rem 1.15rem;
+      color: white;
+      background: var(--accent);
+      border-radius: 11px;
+      text-decoration: none;
+      font-weight: 750;
+    }
+
+    footer {
+      padding: 0 0 3rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 800px) {
+      .layout,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 3.5rem 0 4rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: min(100% - 2rem, var(--max-width));
+      }
+
+      .schedule-item {
+        grid-template-columns: 1fr;
+        gap: 0.15rem;
+      }
+    }
+
+    @media print {
+      body {
+        background: white;
+      }
+
+      nav,
+      .button {
+        display: none;
+      }
+
+      section,
+      aside {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container" aria-label="Seitennavigation">
+      <a class="brand" href="#">Agentische KI für Forschende</a>
+      <div class="nav-links">
+        <a href="#ziele">Lernziele</a>
+        <a href="#inhalte">Inhalte</a>
+        <a href="#ablauf">Ablauf</a>
+        <a href="#teilnahme">Teilnahme</a>
+      </div>
+    </nav>
+
+    <div class="hero container">
+      <p class="eyebrow">Interaktiver Workshop · 4 Stunden</p>
+      <h1>Einführung in agentische KI für Forschende</h1>
+      <p class="lead">
+        Ein praxisorientierter Einstieg in Claude Code, agentische Arbeitsweisen
+        und eigene Skills – mit dem Ziel, KI kompetent, kritisch und
+        verantwortungsvoll in der Forschung einzusetzen.
+      </p>
+
+      <div class="hero-tags" aria-label="Workshop-Schwerpunkte">
+        <span class="tag">KI-Literacy</span>
+        <span class="tag">Claude Code</span>
+        <span class="tag">Visual Studio Code</span>
+        <span class="tag">Eigene Skills</span>
+        <span class="tag">Praxisübungen</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="layout">
+      <div class="stack">
+        <section>
+          <h2>Über den Workshop</h2>
+          <p>
+            Agentische KI kann mehr als einzelne Prompts beantworten: Sie kann
+            umfangreichere Aufgaben planen, Dateien und Werkzeuge einbeziehen,
+            mehrere Arbeitsschritte ausführen und Ergebnisse anhand vorgegebener
+            Kriterien überprüfen. Im Workshop lernen die Teilnehmenden diese
+            Arbeitsweise praktisch kennen und setzen sie auf typische Aufgaben
+            aus dem Forschungsalltag an.
+          </p>
+          <p>
+            Gearbeitet wird auf dem eigenen Laptop mit Claude Code in Visual
+            Studio Code. Kurze Inputs wechseln sich mit angeleiteten Übungen,
+            Reflexionsphasen und der Entwicklung eines eigenen wiederverwendbaren
+            Skills ab.
+          </p>
+        </section>
+
+        <section class="literacy" id="ziele">
+          <h2>Ziel: KI-Literacy für die Forschung</h2>
+          <p>
+            Der Workshop zielt nicht nur auf die Bedienung eines Werkzeugs.
+            Die Teilnehmenden sollen <strong>agentische KI verstehen, angemessen
+            einsetzen, kritisch bewerten und kontrollieren</strong> können.
+          </p>
+
+          <div class="cards">
+            <div class="mini-card">
+              <h3>Verstehen</h3>
+              <p>
+                Funktionsweise, Handlungsspielräume und Unterschiede zwischen
+                Chatbots, Assistenten und agentischen Systemen einordnen.
+              </p>
+            </div>
+
+            <div class="mini-card">
+              <h3>Anwenden</h3>
+              <p>
+                Geeignete Forschungsaufgaben auswählen, klar formulieren und in
+                überprüfbare Schritte zerlegen.
+              </p>
+            </div>
+
+            <div class="mini-card">
+              <h3>Bewerten</h3>
+              <p>
+                Ergebnisse, Quellen, Änderungen und Schlussfolgerungen
+                systematisch auf Qualität und Plausibilität prüfen.
+              </p>
+            </div>
+
+            <div class="mini-card">
+              <h3>Verantworten</h3>
+              <p>
+                Datenschutz, Vertraulichkeit, Transparenz und gute
+                wissenschaftliche Praxis bei der Nutzung berücksichtigen.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="inhalte">
+          <h2>Inhalte und Übungen</h2>
+          <ul>
+            <li>Grundlagen agentischer KI und Aufbau eines agentischen Harness</li>
+            <li>Arbeiten mit Claude Code in Visual Studio Code</li>
+            <li>Aufgaben sinnvoll beschreiben, eingrenzen und kontrollieren</li>
+            <li>Literaturverzeichnisse prüfen und nach Vorgaben formatieren</li>
+            <li>Relevante Ergebnisse in Dokumenten identifizieren und strukturieren</li>
+            <li>Wissenschaftliche Texte überarbeiten und auf Konsistenz prüfen</li>
+            <li>Änderungen nachvollziehbar machen und Ergebnisse verifizieren</li>
+            <li>Eigene Skills für wiederkehrende Forschungsabläufe erstellen</li>
+            <li>Grenzen, Fehlerquellen, Datenschutz und wissenschaftliche Verantwortung</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Was die Teilnehmenden anschließend können</h2>
+          <ul>
+            <li>geeignete und ungeeignete Einsatzfelder agentischer KI unterscheiden,</li>
+            <li>Claude Code kontrolliert auf lokale Forschungsdateien anwenden,</li>
+            <li>komplexere Aufgaben in transparente Teilschritte überführen,</li>
+            <li>eigene Qualitätskriterien und Kontrollpunkte definieren,</li>
+            <li>einen einfachen Skill erstellen, testen und weiterentwickeln,</li>
+            <li>KI-Ergebnisse kritisch prüfen, statt sie ungeprüft zu übernehmen.</li>
+          </ul>
+        </section>
+
+        <section id="ablauf">
+          <h2>Vorläufiger Ablauf</h2>
+          <div class="schedule">
+            <div class="schedule-item">
+              <div class="schedule-time">Teil 1</div>
+              <div>
+                <strong>Grundlagen und Orientierung</strong><br>
+                Agentische KI, Claude Code, Sicherheit und Arbeitsweise
+              </div>
+            </div>
+
+            <div class="schedule-item">
+              <div class="schedule-time">Teil 2</div>
+              <div>
+                <strong>Angeleitete Übungen</strong><br>
+                Recherche, Literatur, Textüberarbeitung und Konsistenzprüfung
+              </div>
+            </div>
+
+            <div class="schedule-item">
+              <div class="schedule-time">Teil 3</div>
+              <div>
+                <strong>Eigene Skills</strong><br>
+                Wiederverwendbare Anweisungen für individuelle Forschungsabläufe
+              </div>
+            </div>
+
+            <div class="schedule-item">
+              <div class="schedule-time">Teil 4</div>
+              <div>
+                <strong>Reflexion und Transfer</strong><br>
+                Qualitätssicherung, Grenzen und Einsatz im eigenen Arbeitsalltag
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <aside id="teilnahme">
+        <h2>Rahmendaten</h2>
+
+        <div class="meta">
+          <div class="meta-item">
+            <strong>Vortragende</strong>
+            Prof. Matthias König<br>
+            Prof. André Calero Valdez
+          </div>
+
+          <div class="meta-item">
+            <strong>Zielgruppe</strong>
+            Aktiv Forschende mit ersten Erfahrungen in generativer KI und ohne
+            Vorkenntnisse in agentischer KI
+          </div>
+
+          <div class="meta-item">
+            <strong>Dauer und Format</strong>
+            4 Stunden, interaktiv, mit praktischen Übungen
+          </div>
+
+          <div class="meta-item">
+            <strong>Technische Voraussetzungen</strong>
+            Eigener Laptop, installiertes Visual Studio Code und eine für den
+            Workshop verfügbare bezahlte Claude-Version
+          </div>
+
+          <div class="meta-item">
+            <strong>Termin und Ort</strong>
+            Wird noch ergänzt
+          </div>
+        </div>
+
+        <div class="note">
+          Programmierkenntnisse sind nicht erforderlich. Die notwendigen Zugänge
+          und Installationen sollten vor Workshopbeginn eingerichtet sein.
+        </div>
+
+        <a class="button" href="#" aria-label="Platzhalter für die Anmeldung">
+          Anmeldung folgt
+        </a>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="container">
+    <p>
+      Weitere Informationen:
+      <a href="https://uzl-agentic.netlify.app">uzl-agentic.netlify.app</a>
+      · Stand: Juli 2026
+    </p>
+  </footer>
+</body>
+</html>
