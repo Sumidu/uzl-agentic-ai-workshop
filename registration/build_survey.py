@@ -77,7 +77,7 @@ S("emailresponseto", "{EMAIL}")
 
 # --- Language settings
 TITLE = "Einführung in agentische KI für Forschende"
-WHEN = "Freitag, 13. November 2026, 9:00–12:45 Uhr"
+WHEN = "Freitag, 13. November 2026, 9:00–13:00 Uhr"
 WHERE = "Universität zu Lübeck, Ratzeburger Allee 160, Gebäude 64, PC-Pool (3. Etage)"
 CONTACT = "[[TODO: Kontakt-E-Mail]]"
 SL("surveyls_title", f"Anmeldung: {TITLE}")
