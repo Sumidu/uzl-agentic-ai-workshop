@@ -310,6 +310,31 @@
       margin-bottom: 0.25rem;
     }
 
+    .presenters {
+      display: grid;
+      gap: 1rem;
+      margin-top: 0.85rem;
+    }
+
+    .presenter {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .presenter img {
+      width: 76px;
+      height: 76px;
+      flex: 0 0 76px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .presenter-name {
+      font-weight: 650;
+      line-height: 1.35;
+    }
+
     .note {
       margin-top: 1rem;
       padding: 1rem;
@@ -640,8 +665,18 @@
         <div class="meta">
           <div class="meta-item">
             <strong>Vortragende</strong>
-            Prof. Matthias König<br>
-            Prof. André Calero Valdez
+            <div class="presenters">
+              <div class="presenter">
+                <img src="images/matthias.webp"
+                     width="76" height="76" loading="lazy" decoding="async" alt="Porträt von Prof. Matthias König">
+                <span class="presenter-name">Prof. Matthias König</span>
+              </div>
+              <div class="presenter">
+                <img src="images/andre.jpg"
+                     width="76" height="76" loading="lazy" decoding="async" alt="Porträt von Prof. André Calero Valdez">
+                <span class="presenter-name">Prof. André Calero Valdez</span>
+              </div>
+            </div>
           </div>
 
           <div class="meta-item">
