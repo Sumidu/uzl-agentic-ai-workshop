@@ -37,9 +37,9 @@ Survey settings → Email templates → Detailed admin notification → Body (su
 <p>Guten Tag,</p><p>vielen Dank für Ihre Anmeldung zum Workshop „Einführung in agentische KI für Forschende“. Ihre Anmeldung ist bei uns eingegangen.</p><p><strong>Termin:</strong> Freitag, 13. November 2026, 9:00–12:45 Uhr<br><strong>Ort:</strong> Universität zu Lübeck, Ratzeburger Allee 160, Gebäude 64, PC-Pool (3. Etage)</p><p>Es gibt maximal 12 Plätze, die in der Reihenfolge der Anmeldungen vergeben werden. Vor dem Workshop melden wir uns mit Ihrer Teilnahmebestätigung oder Ihrem Platz auf der Warteliste sowie mit Hinweisen zur technischen Vorbereitung.</p><p>Ihre Angaben:</p>{ANSWERTABLE}<p>Möchten Sie Ihre Anmeldung zurückziehen, schreiben Sie bitte an [[TODO: Kontakt-E-Mail]].</p><p>Viele Grüße<br>Prof. Matthias König und Prof. André Calero Valdez</p>
 ```
 
-## Welcome message
+## Welcome message (optional)
 
-Survey settings → Text elements → Welcome message
+Survey settings → Text elements → Welcome message. Replaces any edits made in LimeSurvey; adds the address and the 12 places.
 
 ```html
 <p>Vielen Dank für Ihr Interesse am Workshop <strong>Einführung in agentische KI für Forschende</strong>.</p><p><strong>Termin:</strong> Freitag, 13. November 2026, 9:00–12:45 Uhr<br><strong>Ort:</strong> Universität zu Lübeck, Ratzeburger Allee 160, Gebäude 64, PC-Pool (3. Etage)</p><p>Es gibt maximal 12 Plätze, die in der Reihenfolge der Anmeldungen vergeben werden. Ist der Workshop ausgebucht, kommen Sie auf die Warteliste, und wir informieren Sie per E-Mail, sobald ein Platz frei wird.</p><p>Die Anmeldung dauert etwa drei Minuten.</p>

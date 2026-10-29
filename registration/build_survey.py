@@ -188,7 +188,8 @@ fields = [
     ("Privacy policy checkbox label", "Survey settings → Data policy settings → Privacy policy checkbox label", "surveyls_policy_notice_label"),
     ("Privacy policy error message", "Survey settings → Data policy settings → Privacy policy error message", "surveyls_policy_error"),
     ("Confirmation email to participants", "Survey settings → Email templates → Detailed admin notification → Body (subject stays the same)", "email_admin_responses"),
-    ("Welcome message", "Survey settings → Text elements → Welcome message", "surveyls_welcometext"),
+    ("Welcome message (optional)", "Survey settings → Text elements → Welcome message. Replaces any edits made "
+     "in LimeSurvey; adds the address and the 12 places.", "surveyls_welcometext"),
 ]
 with open(TEXTS, "w", encoding="utf-8") as f:
     f.write("# Survey texts for copy and paste\n\n"

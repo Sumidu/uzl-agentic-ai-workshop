@@ -17,7 +17,10 @@ confirmation email. The IMIS instance also runs LimeSurvey 6.
 
 The live survey was imported from an earlier version of the file. To bring it up to date, paste the
 blocks from `texte.md` into the fields named there. Texts can be changed while the survey is
-active, and existing responses are kept.
+active, and existing responses are kept. Questions, however, are locked while it is active.
+
+Delete any test registrations before the link goes public. Places are given out in order of
+submission, so a test entry would take one of the 12.
 
 ## Setting it up from scratch (e.g. for a later workshop)
 
@@ -35,7 +38,7 @@ active, and existing responses are kept.
      time, and later registrations form the waiting list.
 5. **Activate** in *open access mode* (no participant list).
 6. **Test once with your own address.** Check that the confirmation email arrives and isn't marked
-   as spam.
+   as spam. Then delete the test response, so it doesn't take a place.
 
 ## Questions
 
