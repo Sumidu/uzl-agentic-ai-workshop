@@ -80,11 +80,15 @@ TITLE = "Einführung in agentische KI für Forschende"
 WHEN = "Freitag, 13. November 2026, 9:00–13:00 Uhr"
 WHERE = "Universität zu Lübeck, Ratzeburger Allee 160, Gebäude 64, PC-Pool (3. Etage)"
 CONTACT = "[[TODO: Kontakt-E-Mail]]"
+UMBRELLA = ("Der Workshop ist Teil der <a href='https://woche-der-ki.de/' target='_blank' rel='noopener'>Woche der KI "
+            "Lübeck</a> (9.–14. November 2026).")
+LAPTOP = "Bitte bringen Sie Ihren eigenen Laptop mit: Im PC-Pool gibt es keine Rechner, aber USB-C-Dockingstationen."
 SL("surveyls_title", f"Anmeldung: {TITLE}")
 SL("surveyls_description", "Anmeldung zum vierstündigen interaktiven Workshop.")
 SL("surveyls_welcometext",
-   f"<p>Vielen Dank für Ihr Interesse am Workshop <strong>{TITLE}</strong>.</p>"
+   f"<p>Vielen Dank für Ihr Interesse am Workshop <strong>{TITLE}</strong>. {UMBRELLA}</p>"
    f"<p><strong>Termin:</strong> {WHEN}<br><strong>Ort:</strong> {WHERE}</p>"
+   f"<p>{LAPTOP}</p>"
    "<p>Es gibt maximal 12 Plätze, die in der Reihenfolge der Anmeldungen vergeben werden. Ist der Workshop "
    "ausgebucht, kommen Sie auf die Warteliste, und wir informieren Sie per E-Mail, sobald ein Platz frei wird.</p>"
    "<p>Die Anmeldung dauert etwa drei Minuten.</p>")
@@ -134,6 +138,7 @@ SL("email_admin_responses",
    "<p>Guten Tag,</p>"
    f"<p>vielen Dank für Ihre Anmeldung zum Workshop „{TITLE}“. Ihre Anmeldung ist bei uns eingegangen.</p>"
    f"<p><strong>Termin:</strong> {WHEN}<br><strong>Ort:</strong> {WHERE}</p>"
+   f"<p>{LAPTOP}</p>"
    "<p>Es gibt maximal 12 Plätze, die in der Reihenfolge der Anmeldungen vergeben werden. Vor dem Workshop melden "
    "wir uns mit Ihrer Teilnahmebestätigung oder Ihrem Platz auf der Warteliste sowie mit Hinweisen zur technischen "
    "Vorbereitung.</p>"
